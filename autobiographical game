@@ -1,0 +1,151 @@
+let sceneNum = 0;
+let img;
+let img1;
+let img2;
+let img3;
+let doorOne;
+let test;
+let doorTwo;
+let doorThree;
+let showPopup = false;
+insidescene1 = 0;
+
+function preload() {
+  img = loadImage('images/intro.jpg');
+  img1 = loadImage('images/gamelevel1.jpg');
+  img2 = loadImage('images/gamelevel2.png');
+  img3 = loadImage('images/gamelevel3.jpg');
+  popupImage = loadImage('images/button.png');
+}
+
+function setup() {
+  createCanvas(600, 600);
+  img.resize(500, 200);
+  popupImage.resize(500, 200);
+}
+
+
+function draw() {
+
+  switch(sceneNum){
+    case 0:
+      startScreen();
+      break;
+    case 1:
+      sceneOne();
+      break;
+    case 2:
+      sceneTwo();
+      break;
+    case 3:
+      sceneThree();
+      break;
+
+  }
+}
+
+function startScreen() {
+  image(img1, 0, 0);
+  image(img, 55, 200);
+}
+
+function sceneOne(){
+  
+  image(img1, 0, 0);
+  if(insidescene1 == 0)
+  {
+    //doorOne = new Sprite(225, 450);
+    //doorTwo = new Sprite(475, 490);
+    //doorThree = new Sprite(240, 300);
+    //fill(255);
+    //test = rect(225, 450, 100, 100);
+   //doorOne.height = 120;
+    insidescene1 = 1;
+  }
+
+  fill(145, 255, 67);
+  rect(225, 450, 100, 100);
+  rect(240, 300, 50, 50);
+ 
+  // if (doorOne.mouse.presses()) {
+  //   // Trigger some action when the mouse is hovering over doorOne
+  //   showPopup = true;
+  // }
+
+  if (showPopup) {
+    loadPopup();
+  }
+
+  if(mouseX>225 && mouseX<300 && mouseY>450 && mouseY<500){
+    sceneNum = 1;
+    console.log('hi ');
+  }
+
+  // if (doorTwo.mouse.hovering()) {
+  //   // Trigger some action when the mouse is hovering over doorOne
+  //   console.log("Mouse hovering over doorTwo");
+  // }
+
+  // if (doorThree.mouse.hovering()) {
+  //   // Trigger some action when the mouse is hovering over doorOne
+  //   console.log("Mouse hovering over doorThree");
+  }
+
+function loadPopup(){
+  image(popupImage,55, 200);
+}
+
+function mousePressed() {
+  if(mouseX>284 && mouseX<317 && mouseY>335 && mouseY<354){
+    sceneNum = 1;
+    console.log('changing to scene ', sceneNum);
+  }
+
+  if(mouseX>225 && mouseX<300 && mouseY>450 && mouseY<500 && sceneNum == 1){
+    //sceneNum = 1;
+    console.log('hi ');
+    showPopup = true;
+  }
+  if(mouseX>150 && mouseX<220 && mouseY>335 && mouseY<364 && showPopup == true && sceneNum == 1){
+    sceneNum = 2;
+    console.log('changing to scene ');
+    showPopup = false;
+  }
+
+  if(mouseX>97 && mouseX<157 && mouseY>221 && mouseY<340 && sceneNum == 2){
+    //sceneNum = 3;
+    console.log('hiw ');
+    showPopup = true;
+    //loadPopup();
+  }
+
+  // if(mouseX>225 && mouseX<350 && mouseY>450 && mouseY<400 && showPopup == true){
+  //   sceneNum = 3;
+  //   console.log('changing to scene ');
+  // }
+
+  if(mouseX>150 && mouseX<220 && mouseY>335 && mouseY<364 && showPopup == true && sceneNum == 2){
+    sceneNum = 3;
+    console.log('changing to scene ');
+    showPopup = false;
+  }
+
+}
+
+function sceneTwo() {
+  //showPopup = false;
+  //console.log(mouseX, mouseY);
+  image(img2,0,0);
+rect(97, 221, 60, 120);
+
+if (showPopup) {
+  loadPopup();
+}
+}
+
+function sceneThree(){
+  image(img3,0,0);
+
+}
+
+
